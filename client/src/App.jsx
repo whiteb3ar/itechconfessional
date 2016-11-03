@@ -6,7 +6,7 @@ import ConfessionList from './components/ConfessionList.jsx';
 
 import './App.css';
 
-import confessions from '../../server/confessions.js';
+import confessions from '../confessions.js';
 
 var id = 1;
 const getId = () => {
