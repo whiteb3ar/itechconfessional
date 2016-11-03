@@ -6,7 +6,7 @@ import ConfessionList from './components/ConfessionList.jsx';
 
 import './App.css';
 
-/*import confessions from '../../server/confessions.js';
+import confessions from '../../server/confessions.js';
 
 var id = 1;
 const getId = () => {
@@ -26,9 +26,10 @@ export default () => (
 		<PanelBar title="Do not hesistate. It's anonymous." />
 		<ConfessionList confessions={confessions} />
 	</div>
-);*/
+);
 
-import ConfessionListContainer from './containers/ConfessionsListContainer.jsx';
+//with separated concerns
+/*import ConfessionListContainer from './containers/ConfessionsListContainer.jsx';
 
 export default class App extends React.Component {
 	render() {
@@ -40,4 +41,4 @@ export default class App extends React.Component {
 			</div>
 		);
 	}
-}
+}*/
