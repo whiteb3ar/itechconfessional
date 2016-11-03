@@ -2,7 +2,7 @@ import React from 'react';
 
 import ConfessionList from '../components/ConfessionList.jsx';
 
-import { fetchConfessions, fetchComments } from '../flux/ConfessionsActions.js';
+/*import { fetchConfessions, fetchComments } from '../flux/ConfessionsActions.js';
 import ConfessionsStore from '../flux/ConfessionsStore.js';
 
 export default class ConfessionListContainer extends React.Component {
@@ -44,4 +44,26 @@ export default class ConfessionListContainer extends React.Component {
 			/>
 		);
 	}
+}*/
+
+import withSubscription from './ConfessionsListContainerWithSubscription.jsx';
+
+import { fetchConfessions, fetchComments } from '../flux/ConfessionsActions.js';
+import ConfessionsStore from '../flux/ConfessionsStore.js';
+
+class ConfessionListContainer extends React.Component {
+	componentDidMount() {
+	    fetchConfessions();
+	}
+
+	render() {
+		return (
+			<ConfessionList
+				confessions={this.props.confessions}
+				getComments={fetchComments}
+			/>
+		);
+	}
 }
+
+export default withSubscription(ConfessionListContainer);
