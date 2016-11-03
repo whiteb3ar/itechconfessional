@@ -65,6 +65,21 @@ const mutateConfessions = (mutation) => (request, response) => {
 	response.sendStatus(200);
 }
 
+/*
+confession: {
+	confessionId: int
+	content: string,
+	score: int,
+	commentsCount: int
+}
+
+comment: {
+	commentId: int,
+	content: string,
+	score: int
+}
+*/
+
 app.get("/confessions", (request, response) => {
 	const projected = confessions.map(x => {
 		const confession = Object.assign({}, x, {

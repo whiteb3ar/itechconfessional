@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Score from './Score.jsx';
 import CommentsPreview from './CommentsPreview.jsx';
 
 import CommentList from './CommentList.jsx';
 
-export default ({ content, score, comments, commentsCount, getComments }) => (
+const Confession = ({ content, score, comments, commentsCount, getComments }) => (
 	<div className="confession">
 		<div className="confession__content">{content}</div>		
 		<div className="confession__summary">
@@ -17,3 +17,13 @@ export default ({ content, score, comments, commentsCount, getComments }) => (
 		}
 	</div>
 );
+
+Confession.propTypes = {
+	content: PropTypes.string.isRequired,
+	score: PropTypes.number.isRequired,
+	comments: PropTypes.array.isRequired,
+	commentsCount: PropTypes.number.isRequired,
+	getComments: PropTypes.func.isRequired
+};
+
+export default Confession;

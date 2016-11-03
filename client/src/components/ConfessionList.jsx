@@ -2,7 +2,8 @@ import React from 'react';
 
 import Confession from './Confession.jsx';
 
-/*export default ({ confessions }) => (
+//pure as initial implementation
+export default ({ confessions, getComments }) => (
 	<div className="confession-list">
 		{ 
 			confessions.map((x, i) => 
@@ -12,12 +13,20 @@ import Confession from './Confession.jsx';
 							score={x.score} 
 							comments={x.comments}
 							commentsCount={x.commentsCount}
+							getComments={() => getComments(x.confessionId)}
 				/>
 			)
 		}
 	</div>
-);*/
+);
 
+/*
+
+//with flux store but mix of concerns
+import { fetchConfessions, fetchComments } from '../flux/ConfessionsActions.js';
+import ConfessionsStore from '../flux/ConfessionsStore.js';
+
+//just helper for map function
 const withComments = (confessionId, comments) => confession => {
 	if (confession.confessionId !== confessionId) {
 		return confession;
@@ -35,6 +44,14 @@ export default class ConfessionList extends React.Component {
 		this.state = {
 			confessions: []
 		};
+
+		this._onChange = this._onChange.bind(this);
+	}
+
+	_onChange() {
+		this.setState({ ...this.state,
+			confessions: ConfessionsStore.getConfessions()
+		});
 	}
 
 	componentDidMount() {
@@ -55,6 +72,20 @@ export default class ConfessionList extends React.Component {
 		});
 	}
 
+	// componentDidMount() {
+	//     ConfessionsStore.addChangeListener(this._onChange);
+
+	//     fetchConfessions();
+	// }
+
+	// componentWillUnmount() {
+	// 	ConfessionsStore.removeChangeListener(this._onChange);
+	// }
+
+	// getComments(id) {
+	// 	fetchComments(id);
+	// }
+
 	render() {
 		return (
 			<div className="confession-list">
@@ -73,4 +104,4 @@ export default class ConfessionList extends React.Component {
 			</div>
 		);
 	}
-}
+}*/

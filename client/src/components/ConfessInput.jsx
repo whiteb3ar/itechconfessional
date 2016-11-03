@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default class ConfessInput extends React.Component {
 	constructor(props) {
@@ -21,8 +21,12 @@ export default class ConfessInput extends React.Component {
 		return (
 			<div className="confess">
 				<input className="confess__input" value={this.state.confess} onChange={this.handleChange} />
-				<button onClick={this.props.confess}>Confess</button>
+				<button onClick={this.props.onConfess}>Confess</button>
 			</div>
 		);
 	}
 }
+
+ConfessInput.propTypes = {
+	onConfess: PropTypes.func.isRequired
+};
