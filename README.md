@@ -1,6 +1,6 @@
 # itechconfessional
 
-##how to launch:
+how to launch:
 
 run from /server folder
   >npm install
