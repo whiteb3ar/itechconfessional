@@ -2,12 +2,12 @@
 
 ##how to launch:
 
-run from server folder
+run from /server folder
   >npm install
   
   >npm start
 
-run from client folder
+run from /client folder
   >npm install
   
   >npm run start-watch
