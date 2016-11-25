@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -37,6 +38,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: __dirname + "/index.html"
     }),
+    new CopyWebpackPlugin([
+      { from: __dirname + '/img/*', to: '/build/img' }
+    ]),
     // new webpack.optimize.UglifyJsPlugin({
     //     compress: {
     //         warnings: false
