@@ -1,10 +1,16 @@
-import React from 'react';
-
+import React, { PropTypes } from 'react';
 import ConfessInput from './ConfessInput.jsx';
 
-export default ({ title, confess }) => (
+const PanelBar = ({ title, onConfess }) => (
 	<div className="panel-bar">
 		<span>{title}</span>
-		<ConfessInput confess={null} />
+		<ConfessInput onConfess={onConfess} />
 	</div>
 );
+
+PanelBar.propTypes = {
+	title: PropTypes.string.isRequired,
+	onConfess: PropTypes.func.isRequired
+};
+
+export default PanelBar;
