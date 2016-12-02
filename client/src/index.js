@@ -15,22 +15,26 @@ function render(confessions) {
 	ReactDOM.render((
 		<App
 			confessions={confessions}
-
-			getComments={(confessionId) => { 
-				getComments(confessionId).then(reRenderApplication); 
-			}}
-
-			onConfess={(content) => {
-				Confess(content).then(reRenderApplication);
-			}}
-
-			onScoreIncrease={(confessionId) => {
-				increaseScore(confessionId).then(reRenderApplication)
-			}}
-
-			onScoreDecrease={(confessionId) => {
-				decreaseScore(confessionId).then(reRenderApplication)
-			}}
 		/>
 	), document.getElementById("root"));
 };
+
+/*
+HINT
+
+getComments={(confessionId) => { 
+	getComments(confessionId).then(reRenderApplication); 
+}}
+
+onConfess={(content) => {
+	Confess(content).then(reRenderApplication);
+}}
+
+onScoreIncrease={(confessionId) => {
+	increaseScore(confessionId).then(reRenderApplication)
+}}
+
+onScoreDecrease={(confessionId) => {
+	decreaseScore(confessionId).then(reRenderApplication)
+}}
+*/

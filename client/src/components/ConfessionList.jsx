@@ -9,14 +9,7 @@ you can use all the power of javascript with no limitations
 const renderConfession = (confession, key, getComments, onScoreIncrease, onScoreDecrease) => (
 	<Confession 
 		key={key} 
-		confessionId={confession.confessionId}
-		content={confession.content} 
-		score={confession.score} 
-		comments={confession.comments}
-		commentsCount={confession.commentsCount}
-		onClick={() => getComments(confession.confessionId)}
-		onScoreIncrease={onScoreIncrease}
-		onScoreDecrease={onScoreDecrease}
+		
 	/>
 );
 
@@ -39,8 +32,24 @@ const confessionShape = PropTypes.shape({
 ConfessionList.propTypes = {
 	confessions: PropTypes.arrayOf(confessionShape).isRequired,
 	getComments: PropTypes.func.isRequired,
-	onScoreIncrease: PropTypes.func.isRequired,
-	onScoreDecrease: PropTypes.func.isRequired
 };
 
 export default ConfessionList;
+
+/*
+HINT
+
+confessionId={confession.confessionId}
+content={confession.content}
+score={confession.score} 
+comments={confession.comments}
+commentsCount={confession.commentsCount}
+onClick={() => getComments(confession.confessionId)}
+
+onScoreIncrease={onScoreIncrease}
+onScoreDecrease={onScoreDecrease}
+
+onScoreIncrease: PropTypes.func.isRequired,
+onScoreDecrease: PropTypes.func.isRequired
+
+*/

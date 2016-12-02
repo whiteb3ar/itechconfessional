@@ -13,8 +13,6 @@ const Confession = ({ confessionId, content, score, comments, commentsCount, onC
 		<div className="confession__summary">
 			<Score 
 				score={score}
-				onIncrease={() => onScoreIncrease(confessionId)}
-				onDecrease={() => onScoreDecrease(confessionId)}
 			/>
 			<CommentsPreview
 				count={commentsCount}
@@ -34,8 +32,17 @@ Confession.propTypes = {
 	comments: PropTypes.array,
 	commentsCount: PropTypes.number.isRequired,
 	onClick: PropTypes.func.isRequired,
-	onScoreIncrease: PropTypes.func.isRequired,
-	onScoreDecrease: PropTypes.func.isRequired
 };
 
 export default Confession;
+
+/*
+HINT
+
+onIncrease={() => onScoreIncrease(confessionId)}
+onDecrease={() => onScoreDecrease(confessionId)}
+...
+onScoreIncrease: PropTypes.func.isRequired,
+onScoreDecrease: PropTypes.func.isRequired
+
+*/
