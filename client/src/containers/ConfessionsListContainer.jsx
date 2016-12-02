@@ -2,40 +2,19 @@ import React, { PropTypes } from 'react';
 
 import ConfessionList from '../components/ConfessionList.jsx';
 
-import { fetchConfessions, fetchComments, increaseScore, decreaseScore } from '../flux/ConfessionsActions.js';
-import ConfessionsStore from '../flux/ConfessionsStore.js';
+import { fetchConfessions, fetchComments, increaseScore, decreaseScore, confess } from '../flux/ConfessionsActions.js';
+
+import withSubscription from './ConfessionsListContainerWithSubscription.jsx';
 
 class ConfessionListContainer extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			confessions: []
-		};
-
-		this._onChange = this._onChange.bind(this);
-	}
-
-	_onChange() {
-		this.setState({ ...this.state,
-			confessions: ConfessionsStore.getConfessions()
-		});
-	}
-
 	componentDidMount() {
-	    ConfessionsStore.addChangeListener(this._onChange);
-
 	    fetchConfessions();
-	}
-
-	componentWillUnmount() {
-		ConfessionsStore.removeChangeListener(this._onChange);
 	}
 
 	render() {
 		const {
 			confessions
-		} = this.state;
+		} = this.props;
 
 		return (
 			<ConfessionList
@@ -48,4 +27,4 @@ class ConfessionListContainer extends React.Component {
 	}
 }
 
-export default ConfessionListContainer;
+export default withSubscription(ConfessionListContainer);

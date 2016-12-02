@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import Confession from './Confession.jsx';
 
+import changeLogger from '../containers/PropsChangeLogger.jsx';
+
 /* 
 everything is just a javascript code. render can be extracted into separate funcitons etc.
 you can use all the power of javascript with no limitations
@@ -43,4 +45,4 @@ ConfessionList.propTypes = {
 	onScoreDecrease: PropTypes.func.isRequired
 };
 
-export default ConfessionList;
+export default changeLogger(ConfessionList);
