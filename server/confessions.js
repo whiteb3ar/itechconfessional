@@ -1,5 +1,5 @@
 module.exports = [{
-	confessionId: 1, 
+	confessionId: 1,
 	content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed leo sagittis, pretium est sed.',
 	score: 10,
 	commentsCount: 2,

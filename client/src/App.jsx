@@ -6,39 +6,15 @@ import ConfessionList from './components/ConfessionList.jsx';
 
 import './App.css';
 
-import confessions from '../confessions.js';
-
-var id = 1;
-const getId = () => {
-	return id++;
-};
-
-confessions.forEach(confession => {
-	confession.confessionId = getId();
-	confession.comments.forEach(comment => {
-		comment.commentId = getId();
-	})
-});
-
-export default () => (
+export default ({ confessions, onConfess, getComments, onScoreIncrease, onScoreDecrease }) => (
 	<div className="application">
 		<Header title="iTechConfessional" />
-		<PanelBar title="Do not hesistate. It's anonymous." />
-		<ConfessionList confessions={confessions} />
+		<PanelBar title="Do not hesistate. It's anonymous." onConfess={onConfess} />
+		<ConfessionList
+			confessions={confessions}
+			getComments={getComments}
+			onScoreIncrease={onScoreIncrease} 
+			onScoreDecrease={onScoreDecrease}
+		/>
 	</div>
-);
-
-//with separated concerns
-/*import ConfessionListContainer from './containers/ConfessionsListContainer.jsx';
-
-export default class App extends React.Component {
-	render() {
-		return (
-			<div className="application">
-				<Header title="iTechConfessional" />
-				<PanelBar title="Do not hesistate. It's anonymous." />
-				<ConfessionListContainer />
-			</div>
-		);
-	}
-}*/
+);	

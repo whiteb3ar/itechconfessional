@@ -1,15 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
 
 import App from './App.jsx';
 
-//const App = () => <div>Hello iTechArt!</div>;
-const NotFound = () => <div>Oops. Something was there... or not...</div>
+import { getConfessions, getComments, Confess, increaseScore, decreaseScore } from './apiclient.js';
 
-ReactDOM.render((
-	<Router history={hashHistory}>
-		<Route path="/" component={App} />
-		<Route path="*" component={NotFound} />
-	</Router>
-), document.getElementById("root"));
+getConfessions().then(reRenderApplication);
+
+function reRenderApplication(confessions) {
+	render(confessions);
+}
+
+function render(confessions) {
+	ReactDOM.render((
+		<App
+			confessions={confessions}
+		/>
+	), document.getElementById("root"));
+};
+
+/*
+HINT
+
+getComments={(confessionId) => { 
+	getComments(confessionId).then(reRenderApplication); 
+}}
+
+onConfess={(content) => {
+	Confess(content).then(reRenderApplication);
+}}
+
+onScoreIncrease={(confessionId) => {
+	increaseScore(confessionId).then(reRenderApplication)
+}}
+
+onScoreDecrease={(confessionId) => {
+	decreaseScore(confessionId).then(reRenderApplication)
+}}
+*/

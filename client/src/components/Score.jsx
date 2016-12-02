@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { PropTypes } from 'react';
 import Thumb from './Thumb.jsx';
 
 const scoreStyle = score => {
@@ -12,10 +11,24 @@ const scoreStyle = score => {
 	};
 }
 
-export default ({ score }) => (
+const Score = ({ score, onIncrease, onDecrease }) => (
 	<div className="score">
-		<Thumb flip="true" />
-		<div className="score__value" style={scoreStyle(score)}>{score}</div>
-		<Thumb />
+		<button className="clear-button" onClick={onIncrease}>
+			+
+		</button>
+		<div className="score__value" style={scoreStyle(score)}>
+			{score}
+		</div>
+		<button className="clear-button" onClick={onDecrease}>
+			-
+		</button>
 	</div>
 );
+
+Score.propTypes = {
+	score: PropTypes.number.isRequired,
+	onIncrease: PropTypes.func.isRequired,
+	onDecrease: PropTypes.func.isRequired
+};
+
+export default Score;

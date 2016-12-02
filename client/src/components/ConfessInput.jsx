@@ -1,32 +1,53 @@
 import React, { PropTypes } from 'react';
 
-export default class ConfessInput extends React.Component {
-	constructor(props) {
-		super(props);
+const ConfessInput = () => (
+	<div className="confess">
+		<input className="confess__input" />
+		<button>Confess</button>
+	</div>
+);
 
-		this.handleChange = this.handleChange.bind(this);
+export default ConfessInput;
 
-		this.state = {
-			confess: ''
-		};
-	}
+/*
+HINT
 
-	handleChange(e) {
-		this.setState({ ...this.state,
-			confess: e.currentTarget.value
-		});
-	}
+constructor() {
+	...
 
-	render() {
-		return (
-			<div className="confess">
-				<input className="confess__input" value={this.state.confess} onChange={this.handleChange} />
-				<button onClick={this.props.onConfess}>Confess</button>
-			</div>
-		);
-	}
+	this.handleChange = this.handleChange.bind(this);
+	this.submitConfession = this.submitConfession.bind(this);
+
+	this.state = {
+		confess: ''
+	};
+
+	...
+}
+
+handleChange(e) {
+	this.setState({ ...this.state,
+		confess: e.currentTarget.value
+	});
+}
+
+submitConfession() {
+	this.props.onConfess(this.state.confess)
+
+	this.setState({ ...this.state,
+		confess: ''
+	});
+}
+
+render() {
+	...
+	value={this.state.confess} onChange={this.handleChange}
+	...
+	onClick={this.submitConfession}
+	...
 }
 
 ConfessInput.propTypes = {
 	onConfess: PropTypes.func.isRequired
 };
+*/

@@ -1,8 +1,7 @@
-import React from 'react';
-
+import React, { PropTypes } from 'react';
 import Comment from './Comment.jsx';
 
-export default ({ comments }) => (
+const CommentList = ({ comments }) => (
 	<div className="comment-list">
 		{
 			comments.map((x, i) => (
@@ -15,3 +14,14 @@ export default ({ comments }) => (
 		}
 	</div>
 );
+
+const commentShape = PropTypes.shape({
+	content: PropTypes.string.isRequired,
+	score: PropTypes.number.isRequired
+});
+
+CommentList.propTypes = {
+	comments: PropTypes.array.isRequired
+};
+
+export default CommentList;
