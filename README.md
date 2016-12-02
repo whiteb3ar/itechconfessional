@@ -6,4 +6,4 @@ Itechconfessional is a bit more complex reactjs helloworld application. This rep
 
 Build & run is done with npm commands. (comprehensive documentation for nmp can be found <a href="https://docs.npmjs.com/">here</a>)
 
-each branch contains its own set of instructions
+Each branch contains its own set of simple cmd instructions. All that you need is [nodejs](https://nodejs.org/en/) installed. That's it!
