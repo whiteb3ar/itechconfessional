@@ -1,17 +1,14 @@
 import React, { PropTypes } from 'react';
 import Confession from './Confession.jsx';
 
-/* 
-everything is just a javascript code. render can be extracted into separate funcitons etc.
-you can use all the power of javascript with no limitations
-*/
+const noop = () => {};
 
 const renderConfession = (confession, key, getComments, onScoreIncrease, onScoreDecrease) => (
 	<Confession 
 		key={key} 
 		confessionId={confession.confessionId}
-		content={confession.content} 
-		score={confession.score} 
+		content={confession.content}
+		score={confession.score}
 		comments={confession.comments}
 		commentsCount={confession.commentsCount}
 		onClick={() => getComments(confession.confessionId)}
@@ -20,27 +17,58 @@ const renderConfession = (confession, key, getComments, onScoreIncrease, onScore
 	/>
 );
 
-const ConfessionList = ({ confessions, getComments, onScoreIncrease, onScoreDecrease }) => (
-	<div className="confession-list">
-		{ 
-			confessions.map((x, i) => renderConfession(x, i, getComments, onScoreIncrease, onScoreDecrease))
-		}
-	</div>
-);
+class ConfessionList extends React.Component {
+	constructor(props) {
+		super(props);
 
-const confessionShape = PropTypes.shape({
-	confessionId: PropTypes.number.isRequired,
-	content: PropTypes.string.isRequired,
-	score: PropTypes.number.isRequired,
-	comments: PropTypes.array,
-	commentsCount: PropTypes.number.isRequired
-});
+		this.state = {
+			confessions: [{
+				confessionId: 1,
+				content: "this should be replaced with flux store",
+				score: 1,
+				comments: [],
+				commentsCount: 0
+			}]
+		};	
+	}
 
-ConfessionList.propTypes = {
-	confessions: PropTypes.arrayOf(confessionShape).isRequired,
-	getComments: PropTypes.func.isRequired,
-	onScoreIncrease: PropTypes.func.isRequired,
-	onScoreDecrease: PropTypes.func.isRequired
-};
+	render() {
+		const {
+			confessions
+		} = this.state;
+
+		return (
+			<div className="confession-list">
+				{ 
+					confessions.map((x, i) => renderConfession(x, i, noop, noop, noop))
+				}
+			</div>
+		);
+	}
+}
 
 export default ConfessionList;
+
+/*
+HINT
+import { fetchConfessions, fetchComments, increaseScore, decreaseScore } from '../flux/ConfessionsActions.js';
+import ConfessionsStore from '../flux/ConfessionsStore.js';
+
+...
+this._onChange = this._onChange.bind(this);
+...
+_onChange() {
+	this.setState({ ...this.state,
+		confessions: ConfessionsStore.getConfessions()
+	});
+}
+
+componentDidMount() {
+    ConfessionsStore.addChangeListener(this._onChange);
+    fetchConfessions();
+}
+
+componentWillUnmount() {
+	ConfessionsStore.removeChangeListener(this._onChange);
+}
+*/
