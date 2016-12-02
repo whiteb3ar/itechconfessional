@@ -1,6 +1,6 @@
 # itechconfessional
 
-Incomplete version of [simple_completed](https://github.com/andrenovysh/itechconfessional/tree/simple_completed) with hints.
+Incomplete version of [containers and presentational completed](https://github.com/andrenovysh/itechconfessional/tree/containers_and_presentational__completed) with hints.
 
 ###start instructions
  server: 1) npm instal 2) npm start
