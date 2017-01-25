@@ -1,26 +1,28 @@
+var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    vendor: ['react', 'react-dom', 'react-router'],
-    bundle: __dirname + '/src/index.js'
+    bundle: [
+      __dirname + '/src/index.jsx',
+      'webpack-dev-server/client?http://localhost:8080'
+    ]
   },
   output: {
-    path: __dirname + '/build',
+    path: path.resolve('./build'),
     filename: 'bundle.js'
   },
-  //devtool: 'source-map',
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
-        loader: 'babel',
+        loaders: ['babel?presets[]=es2015,presets[]=react,plugins[]=transform-object-rest-spread'],
         test: /\.jsx?$/,  
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react'],
-          plugins: ["transform-object-rest-spread"]
-        }
+        exclude: /node_modules/
       },
       {
           test: /\.css$/,
@@ -30,21 +32,11 @@ module.exports = {
   },
   plugins: [
     new webpack.BannerPlugin("React Workshop"),
-    new webpack.optimize.CommonsChunkPlugin({ 
-      name: 'vendor',
-      filename: 'vendor.bundle.js'
-    }),
     new HtmlWebpackPlugin({
-      template: __dirname + "/index.html"
-    }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //     compress: {
-    //         warnings: false
-    //     }
-    // }),
+      template: path.resolve('./index.html')
+    })
   ],
   devServer: {
-    contentBase: "./build",
     colors: true,
     historyApiFallback: true,
     inline: true

@@ -1,20 +1,21 @@
 import React from 'react';
 
-import Header from './components/Header.jsx';
-import PanelBar from './components/PanelBar.jsx';
-import ConfessionList from './components/ConfessionList.jsx';
+import Header from './components/Header';
+import PanelBar from './components/PanelBar';
+import NewConfessPanel from './containers/NewConfessPanel';
+import ConfessionListContainer from './containers/ConfessionListContainer';
 
 import './App.css';
 
-export default ({ confessions, onConfess, getComments, onScoreIncrease, onScoreDecrease }) => (
+const App = () => (
 	<div className="application">
 		<Header title="iTechConfessional" />
-		<PanelBar title="Do not hesistate. It's anonymous." onConfess={onConfess} />
-		<ConfessionList
-			confessions={confessions}
-			getComments={getComments}
-			onScoreIncrease={onScoreIncrease} 
-			onScoreDecrease={onScoreDecrease}
-		/>
+		<PanelBar>
+			<span>{"Do not hesistate. It's anonymous."}</span>
+			<NewConfessPanel />
+		</PanelBar>
+		<ConfessionListContainer />
 	</div>
-);	
+);
+
+export default App;

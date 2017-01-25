@@ -66,9 +66,7 @@ const mutateConfessions = (mutation) => (request, response) => {
 		var confession = {
 			confessionId: getId(),
 			content: content,
-			score: 0,
-			comments: [],
-			commentsCount: 0
+			score: 0
 		};
 
 		confessions.push(confession);
@@ -79,31 +77,13 @@ const mutateConfessions = (mutation) => (request, response) => {
 }
 
 app.get("/confessions", (request, response) => {
-	const projected = confessions.map(x => {
-		const confession = Object.assign({}, x, {
-			commentsCount: x.comments.length,
-			comments: []
-		});
-		
-		return confession;
-	});
-
-	response.json(projected);
+	response.json(confessions);
 });
 
 app.post("/confessions", mutateConfessions());
 app.delete("/confessions/:confession", mutateConfessions());
 
 app.get("/confessions/:confession", projectConfession(x => x));
-app.get("/confessions/:confession/comments", projectConfession(x => x.comments));
-app.put("/confessions/:confession/comments", mutateConfesssion((x, rawBody) => { 
-	x.comments.push({
-		content: rawBody,
-		score: 0
-	});
-
-	x.commentsCount = x.comments.length;
-}));
 
 app.post("/confessions/:confession/score", mutateConfesssion(x => { x.score++; }));
 app.delete("/confessions/:confession/score", mutateConfesssion(x => { x.score--; }));

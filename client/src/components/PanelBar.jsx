@@ -1,16 +1,22 @@
 import React, { PropTypes } from 'react';
-import ConfessInput from './ConfessInput.jsx';
+import highlighter from './Highlighter';
 
-const PanelBar = ({ title, onConfess }) => (
-	<div className="panel-bar">
-		<span>{title}</span>
-		<ConfessInput onConfess={onConfess} />
+const PanelBar = ({ children, style }) => (
+	<div className="panel-bar" style={style}>
+		{children}
 	</div>
 );
 
 PanelBar.propTypes = {
-	title: PropTypes.string.isRequired,
-	onConfess: PropTypes.func.isRequired
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node
+	]),
+	style: PropTypes.object
 };
 
-export default PanelBar;
+PanelBar.defaultProps = {
+	children: null
+};
+
+export default highlighter(PanelBar);

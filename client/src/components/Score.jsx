@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
-import Thumb from './Thumb.jsx';
 
-const scoreStyle = score => {
+import highlighter from './Highlighter';
+
+const scoreStyle = (score) => {
 	if (!score) {
 		return null;
 	}
@@ -9,17 +10,17 @@ const scoreStyle = score => {
 	return {
 		color: score > 0 ? 'green' : 'red'
 	};
-}
+};
 
-const Score = ({ score, onIncrease, onDecrease }) => (
-	<div className="score">
-		<button className="clear-button" onClick={onIncrease}>
+const Score = ({ score, onIncrease, onDecrease, style }) => (
+	<div className="score" style={style}>
+		<button className="borderless-button" onClick={onIncrease}>
 			+
 		</button>
 		<div className="score__value" style={scoreStyle(score)}>
 			{score}
 		</div>
-		<button className="clear-button" onClick={onDecrease}>
+		<button className="borderless-button" onClick={onDecrease}>
 			-
 		</button>
 	</div>
@@ -31,4 +32,4 @@ Score.propTypes = {
 	onDecrease: PropTypes.func.isRequired
 };
 
-export default Score;
+export default highlighter(Score);
