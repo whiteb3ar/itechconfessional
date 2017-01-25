@@ -2,8 +2,8 @@ import React from 'react';
 
 import Header from './components/Header';
 import PanelBar from './components/PanelBar';
-import NewConfessPanel from './containers/NewConfessPanel';
-import ConfessionListContainer from './containers/ConfessionListContainer';
+import InputWithSubmit from './components/InputWithSubmit';
+import ConfessionList from './components/ConfessionList';
 
 import './App.css';
 
@@ -12,9 +12,9 @@ const App = () => (
 		<Header title="iTechConfessional" />
 		<PanelBar>
 			<span>{"Do not hesistate. It's anonymous."}</span>
-			<NewConfessPanel />
+			<InputWithSubmit />
 		</PanelBar>
-		<ConfessionListContainer />
+		<ConfessionList />
 	</div>
 );
 

@@ -1,5 +1,19 @@
 import React, { PropTypes } from 'react';
-import highlighter from './Highlighter';
+
+class InputWithSubmit extends React.Component {
+	render() {
+		return (
+			<div className="confess">
+				Not implemented yet
+			</div>
+		);
+	}
+}
+
+export default InputWithSubmit;
+
+/*
+HINT
 
 class InputWithSubmit extends React.Component {
 	constructor(props) {
@@ -54,5 +68,4 @@ InputWithSubmit.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	disabledTitle: PropTypes.string.isRequired
 };
-
-export default highlighter(InputWithSubmit);
+*/

@@ -1,3 +1,7 @@
+
+/*
+HINT
+
 import React from 'react';
 
 import ConfessionList from '../components/ConfessionList';
@@ -17,3 +21,5 @@ class ConfessionListContainer extends React.Component {
 }
 
 export default connectToStore(ConfessionListContainer);
+
+*/

@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 
-import highlighter from './Highlighter';
-
 const Header = ({ title, style }) => (
 	<div className="header" style={style}>
 		<img
@@ -16,4 +14,4 @@ Header.propTypes = {
 	title: PropTypes.string.isRequired
 };
 
-export default highlighter(Header);
+export default Header;

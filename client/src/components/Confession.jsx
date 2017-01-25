@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 
-import highlighter from './Highlighter';
 import Score from './Score';
 
 import {
@@ -23,10 +22,4 @@ const Confession = ({ confessionId, content, score, style }) => (
 	</div>
 );
 
-Confession.propTypes = {
-	confessionId: PropTypes.number.isRequired,
-	content: PropTypes.string.isRequired,
-	score: PropTypes.number.isRequired
-};
-
-export default highlighter(Confession);
+export default Confession;

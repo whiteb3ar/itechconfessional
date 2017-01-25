@@ -1,3 +1,6 @@
+/*
+HINT
+
 import React from 'react';
 
 import { getConfessions } from '../apiclient';
@@ -33,4 +36,4 @@ export default WrappedComponent => class ConnectedToStoreComponent extends React
 			<WrappedComponent {...this.props} {...this.state} />
 		);
 	}
-}
+}*/

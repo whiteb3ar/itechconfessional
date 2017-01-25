@@ -1,7 +1,16 @@
 import React, { PropTypes } from 'react';
 import Confession from './Confession';
 
-import highlighter from './Highlighter';
+const ConfessionList = () => (
+	<div className="confession-list">
+		not implemented yet
+	</div>
+);
+
+export default ConfessionList;
+
+/*
+HINT
 
 const ConfessionList = ({ confessions, style }) => (
 	<div className="confession-list" style={style}>
@@ -28,4 +37,4 @@ ConfessionList.propTypes = {
 	confessions: PropTypes.arrayOf(confessionShape).isRequired
 };
 
-export default highlighter(ConfessionList);
+*/

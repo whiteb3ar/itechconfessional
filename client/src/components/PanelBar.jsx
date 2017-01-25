@@ -1,5 +1,15 @@
 import React, { PropTypes } from 'react';
-import highlighter from './Highlighter';
+
+const PanelBar = () => (
+	<div className="panel-bar">
+		Not implemented yet
+	</div>
+);
+
+export default PanelBar;
+
+/*
+HINT
 
 const PanelBar = ({ children, style }) => (
 	<div className="panel-bar" style={style}>
@@ -18,5 +28,4 @@ PanelBar.propTypes = {
 PanelBar.defaultProps = {
 	children: null
 };
-
-export default highlighter(PanelBar);
+*/

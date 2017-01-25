@@ -1,6 +1,4 @@
-import React, { PropTypes } from 'react';
-
-import highlighter from './Highlighter';
+import React, { PropTypes } from 'react'
 
 const scoreStyle = (score) => {
 	if (!score) {
@@ -32,4 +30,4 @@ Score.propTypes = {
 	onDecrease: PropTypes.func.isRequired
 };
 
-export default highlighter(Score);
+export default Score;
